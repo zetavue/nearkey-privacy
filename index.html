@@ -84,8 +84,7 @@
 
         <h2>Screenshot Import &amp; OCR</h2>
         <ul>
-            <li><strong>iOS:</strong> Apple Vision framework &mdash; runs entirely on-device.</li>
-            <li><strong>Android:</strong> Google ML Kit Text Recognition &mdash; the OCR model is bundled with the app and runs entirely on-device. No image data is sent to Google servers.</li>
+            <li>When you choose to import a screenshot, the image is processed using Google ML Kit Text Recognition on-device. The OCR model is bundled with the app and runs entirely on-device. No image data is sent to Google servers.</li>
             <li>Imported images are held temporarily and deleted after the import flow completes.</li>
         </ul>
         <p><em>Note:</em> The Google ML Kit SDK may collect anonymous usage metrics (e.g., API call counts) per Google's privacy practices. This does not include your images or text content.</p>
@@ -97,9 +96,6 @@
             <li>Sync data includes encrypted vault payloads and device metadata (device name, platform, device ID). No plaintext passwords are transmitted.</li>
             <li>Sync sessions expire after 10 minutes of inactivity.</li>
         </ul>
-
-        <h2>Cloud Sync</h2>
-        <p>Cloud sync functionality exists in the codebase but is <strong>not active</strong> in the current release. If enabled in a future update, this policy will be revised accordingly.</p>
 
         <h2>File Import &amp; Export</h2>
         <p>KDBX import/export files are read and generated locally, encrypted with your master password, and saved through the OS file picker or share sheet. NearKey does not transmit imported or exported files to any server.</p>
@@ -118,13 +114,12 @@
             <tr><td>flutter_secure_storage</td><td>Store encryption keys</td><td>Keys in OS secure storage</td></tr>
             <tr><td>local_auth</td><td>Biometric authentication</td><td>OS handles; app gets pass/fail only</td></tr>
             <tr><td>mobile_scanner</td><td>QR code scanning</td><td>On-device only</td></tr>
-            <tr><td>Google ML Kit (Android)</td><td>On-device OCR</td><td>On-device; anonymous SDK metrics may be collected by Google</td></tr>
-            <tr><td>Apple Vision (iOS)</td><td>On-device OCR</td><td>On-device only</td></tr>
+            <tr><td>Google ML Kit</td><td>On-device OCR</td><td>On-device; anonymous SDK metrics may be collected by Google</td></tr>
             <tr><td>google_fonts</td><td>Font loading</td><td>Downloads font from Google CDN</td></tr>
         </table>
 
         <h2>Children's Privacy</h2>
-        <p>NearKey is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+        <p>NearKey is suitable for users of all ages. We do not collect personal information from anyone, including children.</p>
 
         <h2>Data Retention &amp; Deletion</h2>
         <ul>
@@ -187,8 +182,7 @@
 
         <h2>截图导入与 OCR</h2>
         <ul>
-            <li><strong>iOS：</strong>Apple Vision 框架 — 完全在设备上运行。</li>
-            <li><strong>Android：</strong>Google ML Kit 文字识别 — OCR 模型随应用打包，完全在设备上运行，图片数据不会发送到 Google 服务器。</li>
+            <li>当你选择导入截图时，图片使用 Google ML Kit 文字识别在设备端处理。OCR 模型随应用打包，完全在设备上运行，图片数据不会发送到 Google 服务器。</li>
             <li>导入的图片仅临时保留，导入流程完成后即被删除。</li>
         </ul>
         <p><em>注意：</em>Google ML Kit SDK 可能按照 Google 的隐私惯例收集匿名使用指标（如 API 调用次数），不包含你的图片或文字内容。</p>
@@ -200,9 +194,6 @@
             <li>同步数据包括加密的密码库内容和设备元数据（设备名称、平台、设备 ID），不会传输明文密码。</li>
             <li>同步会话在不活动 10 分钟后自动过期。</li>
         </ul>
-
-        <h2>云端同步</h2>
-        <p>云端同步功能存在于代码库中，但在当前版本中<strong>未启用</strong>。如在未来版本中启用，本政策将相应修订。</p>
 
         <h2>文件导入与导出</h2>
         <p>KDBX 导入/导出文件在设备本地读取和生成，使用主密码加密，通过操作系统文件选择器或分享面板保存。NearKey 不会将导入或导出的文件传输到任何服务器。</p>
@@ -221,13 +212,12 @@
             <tr><td>flutter_secure_storage</td><td>存储加密密钥</td><td>密钥存储在操作系统安全存储中</td></tr>
             <tr><td>local_auth</td><td>生物识别认证</td><td>委托给操作系统；应用仅接收通过/失败结果</td></tr>
             <tr><td>mobile_scanner</td><td>二维码扫描</td><td>仅在设备上处理</td></tr>
-            <tr><td>Google ML Kit（Android）</td><td>设备端 OCR</td><td>设备上处理；Google 可能收集匿名 SDK 使用指标</td></tr>
-            <tr><td>Apple Vision（iOS）</td><td>设备端 OCR</td><td>仅在设备上处理</td></tr>
+            <tr><td>Google ML Kit</td><td>设备端 OCR</td><td>设备上处理；Google 可能收集匿名 SDK 使用指标</td></tr>
             <tr><td>google_fonts</td><td>字体加载</td><td>从 Google CDN 下载字体文件</td></tr>
         </table>
 
         <h2>儿童隐私</h2>
-        <p>NearKey 不面向 13 岁以下儿童。我们不会故意收集儿童的个人数据。</p>
+        <p>NearKey 适合所有年龄段的用户使用。我们不会收集任何人的个人数据，包括儿童。</p>
 
         <h2>数据保留与删除</h2>
         <ul>
