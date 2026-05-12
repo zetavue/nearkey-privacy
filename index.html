@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NearKey Privacy Policy</title>
+    <style>
+        :root { --bg: #fafafa; --card: #fff; --text: #1a1a2e; --muted: #555; --accent: #2563eb; --border: #e2e8f0; }
+        @media (prefers-color-scheme: dark) { :root { --bg: #0f172a; --card: #1e293b; --text: #e2e8f0; --muted: #94a3b8; --accent: #60a5fa; --border: #334155; } }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .container { max-width: 760px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+        header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
+        header p { color: var(--muted); font-size: 0.9rem; }
+        .lang-toggle { display: flex; justify-content: center; gap: 12px; margin-bottom: 24px; }
+        .lang-toggle a { padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 500; border: 1px solid var(--border); color: var(--text); transition: all 0.2s; }
+        .lang-toggle a:hover, .lang-toggle a.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        h2 { font-size: 1.25rem; font-weight: 600; margin: 32px 0 12px; padding-top: 8px; }
+        h3 { font-size: 1.05rem; font-weight: 600; margin: 24px 0 8px; }
+        p, li { font-size: 0.95rem; color: var(--muted); margin-bottom: 8px; }
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        strong { color: var(--text); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { font-weight: 600; color: var(--text); background: var(--card); }
+        td { color: var(--muted); }
+        .badge { display: inline-block; background: #16a34a22; color: #16a34a; font-size: 0.75rem; font-weight: 600; padding: 2px 10px; border-radius: 10px; margin-bottom: 16px; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; font-size: 0.8rem; color: var(--muted); }
+        .section { display: none; }
+        .section.active { display: block; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>NearKey</h1>
+        <p>Privacy Policy</p>
+    </header>
+
+    <div class="lang-toggle">
+        <a href="#" class="active" onclick="show('en')">English</a>
+        <a href="#" onclick="show('zh')">中文</a>
+    </div>
+
+    <!-- English -->
+    <div id="en" class="section active">
+        <p>Last updated: 2026-05-12</p>
+        <span class="badge">Local-first &bull; No cloud &bull; No tracking</span>
+
+        <h2>Data We Handle</h2>
+        <p>NearKey may process the following data types <strong>on your device</strong>:</p>
+        <ul>
+            <li>Master password &mdash; used to unlock your local vault</li>
+            <li>Vault entries &mdash; account names, passwords, notes, URLs, categories, and custom fields you save</li>
+            <li>Images you choose to import via screenshot OCR</li>
+            <li>KeePass KDBX files you choose to import or export</li>
+            <li>Local sync data generated when you initiate peer-to-peer synchronization</li>
+        </ul>
+
+        <h2>What We Do NOT Collect</h2>
+        <ul>
+            <li>We do <strong>not</strong> collect, transmit, or store your passwords, vault contents, or master password on any server.</li>
+            <li>We do <strong>not</strong> require you to create an online account.</li>
+            <li>We do <strong>not</strong> include any analytics SDKs, crash reporting services, advertising SDKs, or tracking frameworks.</li>
+            <li>We do <strong>not</strong> sell, share, or monetize your personal data.</li>
+        </ul>
+
+        <h2>Data Storage &amp; Encryption</h2>
+        <ul>
+            <li>Your vault is stored locally in an encrypted database (SQLCipher) on your device.</li>
+            <li>The Data Encryption Key (DEK) is stored in the platform's secure storage (iOS Keychain / Android EncryptedSharedPreferences).</li>
+            <li>The master password is never stored in plain text. It is used only to derive the encryption key at runtime.</li>
+            <li>After biometric unlock is enabled, the vault DEK is stored in secure storage and released only after successful biometric authentication. <strong>No biometric template, fingerprint image, or face data is ever stored by the app.</strong></li>
+        </ul>
+
+        <h2>Biometric Authentication</h2>
+        <p>NearKey uses the device's built-in biometric system (Face ID, Touch ID, fingerprint) via the operating system's native API. The app receives only a success/failure result. No biometric data is captured, stored, or transmitted.</p>
+
+        <h2>Camera Access</h2>
+        <p>Camera access is requested only when you use the QR code scanning feature for local peer sync pairing. Camera data is processed entirely on-device to decode the QR code. No camera images are stored or transmitted.</p>
+
+        <h2>Screenshot Import &amp; OCR</h2>
+        <ul>
+            <li><strong>iOS:</strong> Apple Vision framework &mdash; runs entirely on-device.</li>
+            <li><strong>Android:</strong> Google ML Kit Text Recognition &mdash; the OCR model is bundled with the app and runs entirely on-device. No image data is sent to Google servers.</li>
+            <li>Imported images are held temporarily and deleted after the import flow completes.</li>
+        </ul>
+        <p><em>Note:</em> The Google ML Kit SDK may collect anonymous usage metrics (e.g., API call counts) per Google's privacy practices. This does not include your images or text content.</p>
+
+        <h2>Local Peer-to-Peer Sync</h2>
+        <ul>
+            <li>Sync is initiated only when you explicitly start it and confirm on both devices.</li>
+            <li>Data is transmitted over an encrypted channel (X25519 key exchange + AES encryption) directly between devices &mdash; no server is involved.</li>
+            <li>Sync data includes encrypted vault payloads and device metadata (device name, platform, device ID). No plaintext passwords are transmitted.</li>
+            <li>Sync sessions expire after 10 minutes of inactivity.</li>
+        </ul>
+
+        <h2>Cloud Sync</h2>
+        <p>Cloud sync functionality exists in the codebase but is <strong>not active</strong> in the current release. If enabled in a future update, this policy will be revised accordingly.</p>
+
+        <h2>File Import &amp; Export</h2>
+        <p>KDBX import/export files are read and generated locally, encrypted with your master password, and saved through the OS file picker or share sheet. NearKey does not transmit imported or exported files to any server.</p>
+
+        <h2>Network Access</h2>
+        <table>
+            <tr><th>Connection</th><th>Purpose</th><th>Data Sent</th></tr>
+            <tr><td>Google Fonts CDN</td><td>Download Inter font on first launch</td><td>Standard HTTP headers only</td></tr>
+            <tr><td>Local Wi-Fi (TCP)</td><td>Peer-to-peer sync</td><td>Encrypted vault data &amp; device metadata</td></tr>
+        </table>
+        <p>No other network connections are made. The app has no backend server.</p>
+
+        <h2>Third-Party Components</h2>
+        <table>
+            <tr><th>Component</th><th>Purpose</th><th>Data Handling</th></tr>
+            <tr><td>flutter_secure_storage</td><td>Store encryption keys</td><td>Keys in OS secure storage</td></tr>
+            <tr><td>local_auth</td><td>Biometric authentication</td><td>OS handles; app gets pass/fail only</td></tr>
+            <tr><td>mobile_scanner</td><td>QR code scanning</td><td>On-device only</td></tr>
+            <tr><td>Google ML Kit (Android)</td><td>On-device OCR</td><td>On-device; anonymous SDK metrics may be collected by Google</td></tr>
+            <tr><td>Apple Vision (iOS)</td><td>On-device OCR</td><td>On-device only</td></tr>
+            <tr><td>google_fonts</td><td>Font loading</td><td>Downloads font from Google CDN</td></tr>
+        </table>
+
+        <h2>Children's Privacy</h2>
+        <p>NearKey is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+
+        <h2>Data Retention &amp; Deletion</h2>
+        <ul>
+            <li>All data is stored locally until you delete it within the app or uninstall the app.</li>
+            <li>Uninstalling the app removes all locally stored data.</li>
+            <li>We do not retain any of your data on any server.</li>
+        </ul>
+
+        <h2>Your Choices</h2>
+        <ul>
+            <li>Delete individual vault entries or the entire vault within the app</li>
+            <li>Disable biometric unlock in Settings</li>
+            <li>Decline to use local sync, screenshot import, or KDBX import/export</li>
+            <li>Uninstall the app to remove all data</li>
+        </ul>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time. Changes will be reflected in the "Last updated" date. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
+
+        <h2>Contact</h2>
+        <p>If you have questions about this privacy policy, please contact: <strong><a href="mailto:zetavue@gmail.com">zetavue@gmail.com</a></strong></p>
+    </div>
+
+    <!-- 中文 -->
+    <div id="zh" class="section">
+        <p>最后更新：2026-05-12</p>
+        <span class="badge">本地优先 &bull; 无云端 &bull; 无跟踪</span>
+
+        <h2>我们处理的数据</h2>
+        <p>NearKey 可能在你的设备上处理以下数据类型：</p>
+        <ul>
+            <li>主密码 — 用于解锁本地密码库</li>
+            <li>密码库条目 — 你保存的账号名称、密码、备注、网址、分类和自定义字段</li>
+            <li>你主动选择通过截图导入的图片</li>
+            <li>你主动选择导入或导出的 KeePass KDBX 文件</li>
+            <li>你主动发起本地同步时产生的局域网同步数据</li>
+        </ul>
+
+        <h2>我们不收集什么</h2>
+        <ul>
+            <li>我们<strong>不会</strong>在任何服务器上收集、传输或存储你的密码、密码库内容或主密码。</li>
+            <li>我们<strong>不会</strong>要求你注册在线账户。</li>
+            <li>我们<strong>不</strong>包含任何分析 SDK、崩溃报告服务、广告 SDK 或跟踪框架。</li>
+            <li>我们<strong>不会</strong>出售、分享或以任何方式变现你的个人数据。</li>
+        </ul>
+
+        <h2>数据存储与加密</h2>
+        <ul>
+            <li>你的密码库以加密数据库（SQLCipher）的形式存储在设备本地。</li>
+            <li>数据加密密钥（DEK）存储在平台安全存储中（iOS Keychain / Android 加密共享偏好）。</li>
+            <li>主密码从不以明文存储，仅在运行时用于派生加密密钥。</li>
+            <li>启用生物识别解锁后，密码库 DEK 存储在安全存储中，仅在生物识别验证成功后释放。<strong>应用不会存储任何生物识别模板、指纹图像或面部数据。</strong></li>
+        </ul>
+
+        <h2>生物识别认证</h2>
+        <p>NearKey 通过操作系统的原生 API 使用设备内置的生物识别系统（Face ID、Touch ID、指纹）。应用仅接收成功/失败的结果，不会捕获、存储或传输任何生物识别数据。</p>
+
+        <h2>相机访问</h2>
+        <p>仅在你使用本地同步的二维码扫描功能时请求相机权限。相机数据完全在设备上处理以解码二维码，不会存储或传输相机图像。</p>
+
+        <h2>截图导入与 OCR</h2>
+        <ul>
+            <li><strong>iOS：</strong>Apple Vision 框架 — 完全在设备上运行。</li>
+            <li><strong>Android：</strong>Google ML Kit 文字识别 — OCR 模型随应用打包，完全在设备上运行，图片数据不会发送到 Google 服务器。</li>
+            <li>导入的图片仅临时保留，导入流程完成后即被删除。</li>
+        </ul>
+        <p><em>注意：</em>Google ML Kit SDK 可能按照 Google 的隐私惯例收集匿名使用指标（如 API 调用次数），不包含你的图片或文字内容。</p>
+
+        <h2>本地设备同步</h2>
+        <ul>
+            <li>同步仅在你明确发起并在两台设备上确认后才会进行。</li>
+            <li>数据通过加密通道（X25519 密钥交换 + AES 加密）在设备之间直接传输，不经过任何服务器。</li>
+            <li>同步数据包括加密的密码库内容和设备元数据（设备名称、平台、设备 ID），不会传输明文密码。</li>
+            <li>同步会话在不活动 10 分钟后自动过期。</li>
+        </ul>
+
+        <h2>云端同步</h2>
+        <p>云端同步功能存在于代码库中，但在当前版本中<strong>未启用</strong>。如在未来版本中启用，本政策将相应修订。</p>
+
+        <h2>文件导入与导出</h2>
+        <p>KDBX 导入/导出文件在设备本地读取和生成，使用主密码加密，通过操作系统文件选择器或分享面板保存。NearKey 不会将导入或导出的文件传输到任何服务器。</p>
+
+        <h2>网络访问</h2>
+        <table>
+            <tr><th>连接</th><th>用途</th><th>发送的数据</th></tr>
+            <tr><td>Google Fonts CDN</td><td>首次启动时下载 Inter 字体</td><td>仅标准 HTTP 请求头</td></tr>
+            <tr><td>本地 Wi-Fi（TCP）</td><td>设备间同步</td><td>加密的密码库数据和设备元数据</td></tr>
+        </table>
+        <p>应用不进行其他任何网络连接，没有后端服务器。</p>
+
+        <h2>第三方组件</h2>
+        <table>
+            <tr><th>组件</th><th>用途</th><th>数据处理方式</th></tr>
+            <tr><td>flutter_secure_storage</td><td>存储加密密钥</td><td>密钥存储在操作系统安全存储中</td></tr>
+            <tr><td>local_auth</td><td>生物识别认证</td><td>委托给操作系统；应用仅接收通过/失败结果</td></tr>
+            <tr><td>mobile_scanner</td><td>二维码扫描</td><td>仅在设备上处理</td></tr>
+            <tr><td>Google ML Kit（Android）</td><td>设备端 OCR</td><td>设备上处理；Google 可能收集匿名 SDK 使用指标</td></tr>
+            <tr><td>Apple Vision（iOS）</td><td>设备端 OCR</td><td>仅在设备上处理</td></tr>
+            <tr><td>google_fonts</td><td>字体加载</td><td>从 Google CDN 下载字体文件</td></tr>
+        </table>
+
+        <h2>儿童隐私</h2>
+        <p>NearKey 不面向 13 岁以下儿童。我们不会故意收集儿童的个人数据。</p>
+
+        <h2>数据保留与删除</h2>
+        <ul>
+            <li>所有数据存储在设备本地，直到你在应用内删除或卸载应用。</li>
+            <li>卸载应用将删除所有本地存储的数据。</li>
+            <li>我们不会在任何服务器上保留你的数据。</li>
+        </ul>
+
+        <h2>你的选择</h2>
+        <ul>
+            <li>在应用内删除单个密码库条目或整个密码库</li>
+            <li>在设置中关闭生物识别解锁</li>
+            <li>不使用本地同步、截图导入或 KDBX 导入导出功能</li>
+            <li>卸载应用以删除所有数据</li>
+        </ul>
+
+        <h2>政策变更</h2>
+        <p>我们可能会不时更新本隐私政策。变更将在"最后更新"日期中体现。继续使用应用即表示你接受修订后的政策。</p>
+
+        <h2>联系方式</h2>
+        <p>如果你对本隐私政策有任何疑问，请联系：<strong><a href="mailto:zetavue@gmail.com">zetavue@gmail.com</a></strong></p>
+    </div>
+
+    <footer>
+        &copy; 2026 ZetaVue &mdash; NearKey Password Manager
+    </footer>
+</div>
+<script>
+function show(lang) {
+    document.querySelectorAll('.section').forEach(function(el) { el.classList.remove('active'); });
+    document.getElementById(lang).classList.add('active');
+    document.querySelectorAll('.lang-toggle a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
