@@ -13,7 +13,7 @@
         header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
         header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
         header p { color: var(--muted); font-size: 0.9rem; }
-        .lang-toggle { display: flex; justify-content: center; gap: 12px; margin-bottom: 24px; }
+        .lang-toggle { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
         .lang-toggle a { padding: 6px 16px; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 500; border: 1px solid var(--border); color: var(--text); transition: all 0.2s; }
         .lang-toggle a:hover, .lang-toggle a.active { background: var(--accent); color: #fff; border-color: var(--accent); }
         h2 { font-size: 1.25rem; font-weight: 600; margin: 32px 0 12px; padding-top: 8px; }
@@ -43,6 +43,11 @@
     <div class="lang-toggle">
         <a href="#" class="active" onclick="show('en')">English</a>
         <a href="#" onclick="show('zh')">中文</a>
+        <a href="#" onclick="show('de')">Deutsch</a>
+        <a href="#" onclick="show('es')">Español</a>
+        <a href="#" onclick="show('fr')">Français</a>
+        <a href="#" onclick="show('it')">Italiano</a>
+        <a href="#" onclick="show('pt')">Português</a>
     </div>
 
     <!-- English -->
@@ -239,6 +244,496 @@
 
         <h2>联系方式</h2>
         <p>如果你对本隐私政策有任何疑问，请联系：<strong><a href="mailto:zetavue@gmail.com">zetavue@gmail.com</a></strong></p>
+    </div>
+
+    <!-- Deutsch -->
+    <div id="de" class="section">
+        <p>Zuletzt aktualisiert: 2026-05-12</p>
+        <span class="badge">Lokal zuerst &bull; Keine Cloud &bull; Kein Tracking</span>
+
+        <h2>Daten, die wir verarbeiten</h2>
+        <p>NearKey kann die folgenden Datentypen <strong>auf Ihrem Gerät</strong> verarbeiten:</p>
+        <ul>
+            <li>Master-Passwort &mdash; wird zum Entsperren Ihres lokalen Tresors verwendet</li>
+            <li>Tresor-Einträge &mdash; Kontonamen, Passwörter, Notizen, URLs, Kategorien und benutzerdefinierte Felder, die Sie speichern</li>
+            <li>Bilder, die Sie über den Screenshot-OCR-Import importieren möchten</li>
+            <li>KeePass KDBX-Dateien, die Sie importieren oder exportieren möchten</li>
+            <li>Lokale Synchronisationsdaten, die bei der Peer-to-Peer-Synchronisation entstehen</li>
+        </ul>
+
+        <h2>Was wir NICHT erfassen</h2>
+        <ul>
+            <li>Wir erfassen, übertragen oder speichern <strong>keine</strong> Passwörter, Tresorinhalte oder Master-Passwörter auf einem Server.</li>
+            <li>Wir verlangen <strong>nicht</strong>, dass Sie ein Online-Konto erstellen.</li>
+            <li>Wir binden <strong>keine</strong> Analytics-SDKs, Absturzberichterstattungsdienste, Werbe-SDKs oder Tracking-Frameworks ein.</li>
+            <li>Wir verkaufen, teilen oder vermarkten <strong>nicht</strong> Ihre persönlichen Daten.</li>
+        </ul>
+
+        <h2>Datenspeicherung &amp; Verschlüsselung</h2>
+        <ul>
+            <li>Ihr Tresor wird lokal in einer verschlüsselten Datenbank (SQLCipher) auf Ihrem Gerät gespeichert.</li>
+            <li>Der Datenverschlüsselungsschlüssel (DEK) wird im sicheren Speicher der Plattform gespeichert (iOS Keychain / Android EncryptedSharedPreferences).</li>
+            <li>Das Master-Passwort wird niemals im Klartext gespeichert. Es dient nur zur Ableitung des Verschlüsselungsschlüssels zur Laufzeit.</li>
+            <li>Nach Aktivierung der biometrischen Entsperrung wird der Tresor-DEK im sicheren Speicher abgelegt und nur nach erfolgreicher biometrischer Authentifizierung freigegeben. <strong>Die App speichert keine biometrischen Vorlagen, Fingerabdruckbilder oder Gesichtssdaten.</strong></li>
+        </ul>
+
+        <h2>Biometrische Authentifizierung</h2>
+        <p>NearKey nutzt das integrierte biometrische System des Geräts (Face ID, Touch ID, Fingerabdruck) über die native API des Betriebssystems. Die App erhält lediglich ein Erfolgs-/Fehlschlagsergebnis. Es werden keine biometrischen Daten erfasst, gespeichert oder übertragen.</p>
+
+        <h2>Kamerazugriff</h2>
+        <p>Der Kamerazugriff wird nur angefordert, wenn Sie die QR-Code-Scan-Funktion für lokales Peer-Sync-Pairing nutzen. Kameradaten werden ausschließlich auf dem Gerät zur QR-Code-Decodierung verarbeitet. Es werden keine Kamerabilder gespeichert oder übertragen.</p>
+
+        <h2>Screenshot-Import &amp; OCR</h2>
+        <ul>
+            <li>Wenn Sie einen Screenshot importieren, wird das Bild mit Google ML Kit Texterkennung auf dem Gerät verarbeitet. Das OCR-Modell ist in die App integriert und läuft vollständig auf dem Gerät. Bilddaten werden nicht an Google-Server gesendet.</li>
+            <li>Importierte Bilder werden nur temporär gehalten und nach Abschluss des Importvorgangs gelöscht.</li>
+        </ul>
+        <p><em>Hinweis:</em> Das Google ML Kit SDK kann gemäß den Datenschutzrichtlinien von Google anonyme Nutzungsmetriken (z. B. API-Aufrufzahlen) erfassen. Dies umfasst nicht Ihre Bilder oder Textinhalte.</p>
+
+        <h2>Lokale Peer-to-Peer-Synchronisation</h2>
+        <ul>
+            <li>Die Synchronisation wird nur gestartet, wenn Sie sie explizit initiieren und auf beiden Geräten bestätigen.</li>
+            <li>Daten werden über einen verschlüsselten Kanal (X25519-Schlüsselaustausch + AES-Verschlüsselung) direkt zwischen Geräten übertragen &mdash; kein Server ist beteiligt.</li>
+            <li>Sync-Daten umfassen verschlüsselte Tresor-Nutzdaten und Gerätemetadaten (Gerätename, Plattform, Geräte-ID). Es werden keine Klartext-Passwörter übertragen.</li>
+            <li>Sync-Sitzungen laufen nach 10 Minuten Inaktivität ab.</li>
+        </ul>
+
+        <h2>Datei-Import &amp; Export</h2>
+        <p>KDBX-Import-/Exportdateien werden lokal gelesen und erstellt, mit Ihrem Master-Passwort verschlüsselt und über die Betriebssystem-Dateiauswahl oder das Teilen-Menü gespeichert. NearKey überträgt importierte oder exportierte Dateien nicht an einen Server.</p>
+
+        <h2>Netzwerkzugriff</h2>
+        <table>
+            <tr><th>Verbindung</th><th>Zweck</th><th>Gesendete Daten</th></tr>
+            <tr><td>Google Fonts CDN</td><td>Inter-Schriftart beim ersten Start herunterladen</td><td>Nur Standard-HTTP-Header</td></tr>
+            <tr><td>Lokales Wi-Fi (TCP)</td><td>Peer-to-Peer-Synchronisation</td><td>Verschlüsselte Tresordaten &amp; Gerätemetadaten</td></tr>
+        </table>
+        <p>Es werden keine weiteren Netzwerkverbindungen hergestellt. Die App hat keinen Backend-Server.</p>
+
+        <h2>Drittanbieter-Komponenten</h2>
+        <table>
+            <tr><th>Komponente</th><th>Zweck</th><th>Datenverarbeitung</th></tr>
+            <tr><td>flutter_secure_storage</td><td>Verschlüsselungsschlüssel speichern</td><td>Schlüssel im sicheren OS-Speicher</td></tr>
+            <tr><td>local_auth</td><td>Biometrische Authentifizierung</td><td>Wird vom OS verwaltet; App erhält nur Erfolgs-/Fehlschlagsergebnis</td></tr>
+            <tr><td>mobile_scanner</td><td>QR-Code-Scanning</td><td>Ausschließlich auf dem Gerät</td></tr>
+            <tr><td>Google ML Kit</td><td>On-Device-OCR</td><td>Auf dem Gerät; anonyme SDK-Metriken können von Google erfasst werden</td></tr>
+            <tr><td>google_fonts</td><td>Schriftarten laden</td><td>Lädt Schriftart vom Google CDN herunter</td></tr>
+        </table>
+
+        <h2>Datenschutz für Kinder</h2>
+        <p>NearKey ist für Nutzer aller Altersgruppen geeignet. Wir erfassen keine persönlichen Daten von irgendjemandem, einschließlich Kindern.</p>
+
+        <h2>Datenaufbewahrung &amp; Löschung</h2>
+        <ul>
+            <li>Alle Daten werden lokal gespeichert, bis Sie sie in der App löschen oder die App deinstallieren.</li>
+            <li>Die Deinstallation der App entfernt alle lokal gespeicherten Daten.</li>
+            <li>Wir speichern keine Ihrer Daten auf einem Server.</li>
+        </ul>
+
+        <h2>Ihre Entscheidungen</h2>
+        <ul>
+            <li>Einzelne Tresor-Einträge oder den gesamten Tresor innerhalb der App löschen</li>
+            <li>Biometrische Entsperrung in den Einstellungen deaktivieren</li>
+            <li>Lokale Synchronisation, Screenshot-Import oder KDBX-Import/-Export nicht nutzen</li>
+            <li>Die App deinstallieren, um alle Daten zu entfernen</li>
+        </ul>
+
+        <h2>Änderungen dieser Richtlinie</h2>
+        <p>Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Änderungen werden im Datum „Zuletzt aktualisiert" angezeigt. Die weitere Nutzung der App nach Änderungen gilt als Annahme der überarbeiteten Richtlinie.</p>
+
+        <h2>Kontakt</h2>
+        <p>Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns bitte unter: <strong><a href="mailto:zetavue@gmail.com">zetavue@gmail.com</a></strong></p>
+    </div>
+
+    <!-- Español -->
+    <div id="es" class="section">
+        <p>Última actualización: 2026-05-12</p>
+        <span class="badge">Local primero &bull; Sin nube &bull; Sin rastreo</span>
+
+        <h2>Datos que gestionamos</h2>
+        <p>NearKey puede procesar los siguientes tipos de datos <strong>en su dispositivo</strong>:</p>
+        <ul>
+            <li>Contraseña maestra &mdash; utilizada para desbloquear su caja fuerte local</li>
+            <li>Entradas de la caja fuerte &mdash; nombres de cuenta, contraseñas, notas, URLs, categorías y campos personalizados que guarde</li>
+            <li>Imágenes que elija importar mediante OCR de capturas de pantalla</li>
+            <li>Archivos KeePass KDBX que elija importar o exportar</li>
+            <li>Datos de sincronización local generados al iniciar la sincronización entre dispositivos</li>
+        </ul>
+
+        <h2>Lo que NO recopilamos</h2>
+        <ul>
+            <li><strong>No</strong> recopilamos, transmitimos ni almacenamos sus contraseñas, contenidos de la caja fuerte o contraseña maestra en ningún servidor.</li>
+            <li><strong>No</strong> requerimos que cree una cuenta en línea.</li>
+            <li><strong>No</strong> incluimos ningún SDK de análisis, servicio de informes de fallos, SDK publicitario o framework de rastreo.</li>
+            <li><strong>No</strong> vendemos, compartimos ni monetizamos sus datos personales.</li>
+        </ul>
+
+        <h2>Almacenamiento y cifrado de datos</h2>
+        <ul>
+            <li>Su caja fuerte se almacena localmente en una base de datos cifrada (SQLCipher) en su dispositivo.</li>
+            <li>La clave de cifrado de datos (DEK) se almacena en el almacenamiento seguro de la plataforma (iOS Keychain / Android EncryptedSharedPreferences).</li>
+            <li>La contraseña maestra nunca se almacena en texto plano. Solo se utiliza para derivar la clave de cifrado en tiempo de ejecución.</li>
+            <li>Tras activar el desbloqueo biométrico, la DEK de la caja fuerte se almacena en el almacenamiento seguro y solo se libera tras una autenticación biométrica exitosa. <strong>La aplicación no almacena ninguna plantilla biométrica, imagen de huella dactilar ni datos faciales.</strong></li>
+        </ul>
+
+        <h2>Autenticación biométrica</h2>
+        <p>NearKey utiliza el sistema biométrico integrado del dispositivo (Face ID, Touch ID, huella dactilar) a través de la API nativa del sistema operativo. La aplicación recibe únicamente un resultado de éxito o fracaso. No se capturan, almacenan ni transmiten datos biométricos.</p>
+
+        <h2>Acceso a la cámara</h2>
+        <p>El acceso a la cámara se solicita únicamente cuando utiliza la función de escaneo de códigos QR para el emparejamiento de sincronización local entre dispositivos. Los datos de la cámara se procesan completamente en el dispositivo para decodificar el código QR. No se almacenan ni transmiten imágenes de la cámara.</p>
+
+        <h2>Importación de capturas y OCR</h2>
+        <ul>
+            <li>Cuando elige importar una captura de pantalla, la imagen se procesa mediante Google ML Kit Reconocimiento de Texto en el dispositivo. El modelo OCR está integrado en la aplicación y se ejecuta completamente en el dispositivo. No se envían datos de imagen a los servidores de Google.</li>
+            <li>Las imágenes importadas se mantienen temporalmente y se eliminan tras completar el proceso de importación.</li>
+        </ul>
+        <p><em>Nota:</em> El SDK de Google ML Kit puede recopilar métricas de uso anónimas (p. ej., recuentos de llamadas a la API) según las prácticas de privacidad de Google. Esto no incluye sus imágenes ni contenidos de texto.</p>
+
+        <h2>Sincronización local entre dispositivos</h2>
+        <ul>
+            <li>La sincronización solo se inicia cuando usted la inicia explícitamente y la confirma en ambos dispositivos.</li>
+            <li>Los datos se transmiten a través de un canal cifrado (intercambio de claves X25519 + cifrado AES) directamente entre los dispositivos &mdash; no interviene ningún servidor.</li>
+            <li>Los datos de sincronización incluyen cargas útiles cifradas de la caja fuerte y metadatos del dispositivo (nombre del dispositivo, plataforma, ID del dispositivo). No se transmiten contraseñas en texto plano.</li>
+            <li>Las sesiones de sincronización expiran tras 10 minutos de inactividad.</li>
+        </ul>
+
+        <h2>Importación y exportación de archivos</h2>
+        <p>Los archivos de importación/exportación KDBX se leen y generan localmente, se cifran con su contraseña maestra y se guardan a través del selector de archivos del sistema operativo o la hoja de compartir. NearKey no transmite archivos importados o exportados a ningún servidor.</p>
+
+        <h2>Acceso a la red</h2>
+        <table>
+            <tr><th>Conexión</th><th>Propósito</th><th>Datos enviados</th></tr>
+            <tr><td>Google Fonts CDN</td><td>Descargar fuente Inter en el primer inicio</td><td>Solo encabezados HTTP estándar</td></tr>
+            <tr><td>Wi-Fi local (TCP)</td><td>Sincronización entre dispositivos</td><td>Datos cifrados de la caja fuerte y metadatos del dispositivo</td></tr>
+        </table>
+        <p>No se realizan otras conexiones de red. La aplicación no tiene servidor backend.</p>
+
+        <h2>Componentes de terceros</h2>
+        <table>
+            <tr><th>Componente</th><th>Propósito</th><th>Gestión de datos</th></tr>
+            <tr><td>flutter_secure_storage</td><td>Almacenar claves de cifrado</td><td>Claves en almacenamiento seguro del SO</td></tr>
+            <tr><td>local_auth</td><td>Autenticación biométrica</td><td>Gestionado por el SO; la aplicación solo recibe resultado de éxito/fracaso</td></tr>
+            <tr><td>mobile_scanner</td><td>Escaneo de códigos QR</td><td>Solo en el dispositivo</td></tr>
+            <tr><td>Google ML Kit</td><td>OCR en el dispositivo</td><td>En el dispositivo; Google puede recopilar métricas anónimas del SDK</td></tr>
+            <tr><td>google_fonts</td><td>Carga de fuentes</td><td>Descarga fuentes del CDN de Google</td></tr>
+        </table>
+
+        <h2>Privacidad infantil</h2>
+        <p>NearKey es adecuado para usuarios de todas las edades. No recopilamos información personal de nadie, incluidos los niños.</p>
+
+        <h2>Retención y eliminación de datos</h2>
+        <ul>
+            <li>Todos los datos se almacenan localmente hasta que los elimine en la aplicación o desinstale la aplicación.</li>
+            <li>Desinstalar la aplicación elimina todos los datos almacenados localmente.</li>
+            <li>No conservamos ninguno de sus datos en ningún servidor.</li>
+        </ul>
+
+        <h2>Sus opciones</h2>
+        <ul>
+            <li>Eliminar entradas individuales de la caja fuerte o la caja fuerte completa dentro de la aplicación</li>
+            <li>Desactivar el desbloqueo biométrico en Configuración</li>
+            <li>No utilizar la sincronización local, la importación de capturas o la importación/exportación KDBX</li>
+            <li>Desinstalar la aplicación para eliminar todos los datos</li>
+        </ul>
+
+        <h2>Cambios a esta política</h2>
+        <p>Podemos actualizar esta política de privacidad de vez en cuando. Los cambios se reflejarán en la fecha de "Última actualización". El uso continuado de la aplicación tras los cambios constituye la aceptación de la política revisada.</p>
+
+        <h2>Contacto</h2>
+        <p>Si tiene preguntas sobre esta política de privacidad, contacte con nosotros en: <strong><a href="mailto:zetavue@gmail.com">zetavue@gmail.com</a></strong></p>
+    </div>
+
+    <!-- Français -->
+    <div id="fr" class="section">
+        <p>Dernière mise à jour : 2026-05-12</p>
+        <span class="badge">Local d'abord &bull; Sans cloud &bull; Sans suivi</span>
+
+        <h2>Données que nous traitons</h2>
+        <p>NearKey peut traiter les types de données suivants <strong>sur votre appareil</strong> :</p>
+        <ul>
+            <li>Mot de passe principal &mdash; utilisé pour déverrouiller votre coffre-fort local</li>
+            <li>Entrées du coffre-fort &mdash; noms de compte, mots de passe, notes, URL, catégories et champs personnalisés que vous enregistrez</li>
+            <li>Images que vous choisissez d'importer via l'OCR de captures d'écran</li>
+            <li>Fichiers KeePass KDBX que vous choisissez d'importer ou d'exporter</li>
+            <li>Données de synchronisation locale générées lorsque vous initiez la synchronisation pair à pair</li>
+        </ul>
+
+        <h2>Ce que nous ne collectons PAS</h2>
+        <ul>
+            <li>Ne collectons <strong>pas</strong>, ne transmettons ni ne stockons vos mots de passe, le contenu de votre coffre-fort ou votre mot de passe principal sur un serveur.</li>
+            <li>Nous ne vous demandons <strong>pas</strong> de créer un compte en ligne.</li>
+            <li>Nous n'incluons <strong>aucun</strong> SDK d'analyse, service de rapports de plantage, SDK publicitaire ou framework de suivi.</li>
+            <li>Nous ne vendons, ne partageons ni ne monétisons <strong>pas</strong> vos données personnelles.</li>
+        </ul>
+
+        <h2>Stockage et chiffrement des données</h2>
+        <ul>
+            <li>Votre coffre-fort est stocké localement dans une base de données chiffrée (SQLCipher) sur votre appareil.</li>
+            <li>La clé de chiffrement des données (DEK) est stockée dans le stockage sécurisé de la plateforme (iOS Keychain / Android EncryptedSharedPreferences).</li>
+            <li>Le mot de passe principal n'est jamais stocké en texte clair. Il est uniquement utilisé pour dériver la clé de chiffrement à l'exécution.</li>
+            <li>Après activation du déverrouillage biométrique, la DEK du coffre-fort est stockée dans le stockage sécurisé et n'est libérée qu'après une authentification biométrique réussie. <strong>L'application ne stocke aucun modèle biométrique, image d'empreinte digitale ni donnée faciale.</strong></li>
+        </ul>
+
+        <h2>Authentification biométrique</h2>
+        <p>NearKey utilise le système biométrique intégré de l'appareil (Face ID, Touch ID, empreinte digitale) via l'API native du système d'exploitation. L'application reçoit uniquement un résultat de réussite ou d'échec. Aucune donnée biométrique n'est capturée, stockée ou transmise.</p>
+
+        <h2>Accès à l'appareil photo</h2>
+        <p>L'accès à l'appareil photo est demandé uniquement lorsque vous utilisez la fonctionnalité de scan de codes QR pour l'appairage de synchronisation locale entre appareils. Les données de l'appareil photo sont traitées entièrement sur l'appareil pour décoder le code QR. Aucune image de l'appareil photo n'est stockée ou transmise.</p>
+
+        <h2>Importation de captures d'écran et OCR</h2>
+        <ul>
+            <li>Lorsque vous choisissez d'importer une capture d'écran, l'image est traitée à l'aide de Google ML Kit Reconnaissance de texte sur l'appareil. Le modèle OCR est intégré à l'application et fonctionne entièrement sur l'appareil. Aucune donnée d'image n'est envoyée aux serveurs de Google.</li>
+            <li>Les images importées sont conservées temporairement et supprimées une fois le processus d'importation terminé.</li>
+        </ul>
+        <p><em>Remarque :</em> Le SDK Google ML Kit peut collecter des métriques d'utilisation anonymes (par ex., nombre d'appels API) conformément aux pratiques de confidentialité de Google. Cela n'inclut pas vos images ni le contenu textuel.</p>
+
+        <h2>Synchronisation locale pair à pair</h2>
+        <ul>
+            <li>La synchronisation n'est initiée que lorsque vous la démarrez explicitement et la confirmez sur les deux appareils.</li>
+            <li>Les données sont transmises via un canal chiffré (échange de clés X25519 + chiffrement AES) directement entre les appareils &mdash; aucun serveur n'est impliqué.</li>
+            <li>Les données de synchronisation incluent les charges utiles chiffrées du coffre-fort et les métadonnées de l'appareil (nom de l'appareil, plateforme, identifiant de l'appareil). Aucun mot de passe en texte clair n'est transmis.</li>
+            <li>Les sessions de synchronisation expirent après 10 minutes d'inactivité.</li>
+        </ul>
+
+        <h2>Importation et exportation de fichiers</h2>
+        <p>Les fichiers d'importation/exportation KDBX sont lus et générés localement, chiffrés avec votre mot de passe principal et enregistrés via le sélecteur de fichiers du système ou la feuille de partage. NearKey ne transmet pas les fichiers importés ou exportés vers un serveur.</p>
+
+        <h2>Accès réseau</h2>
+        <table>
+            <tr><th>Connexion</th><th>Objectif</th><th>Données envoyées</th></tr>
+            <tr><td>Google Fonts CDN</td><td>Télécharger la police Inter au premier lancement</td><td>En-têtes HTTP standard uniquement</td></tr>
+            <tr><td>Wi-Fi local (TCP)</td><td>Synchronisation pair à pair</td><td>Données chiffrées du coffre-fort &amp; métadonnées de l'appareil</td></tr>
+        </table>
+        <p>Aucune autre connexion réseau n'est établie. L'application n'a pas de serveur backend.</p>
+
+        <h2>Composants tiers</h2>
+        <table>
+            <tr><th>Composant</th><th>Objectif</th><th>Traitement des données</th></tr>
+            <tr><td>flutter_secure_storage</td><td>Stocker les clés de chiffrement</td><td>Clés dans le stockage sécurisé du système</td></tr>
+            <tr><td>local_auth</td><td>Authentification biométrique</td><td>Géré par le système ; l'application reçoit uniquement un résultat réussite/échec</td></tr>
+            <tr><td>mobile_scanner</td><td>Scan de codes QR</td><td>Uniquement sur l'appareil</td></tr>
+            <tr><td>Google ML Kit</td><td>OCR sur l'appareil</td><td>Sur l'appareil ; Google peut collecter des métriques anonymes du SDK</td></tr>
+            <tr><td>google_fonts</td><td>Chargement des polices</td><td>Télécharge les polices depuis le CDN Google</td></tr>
+        </table>
+
+        <h2>Confidentialité des enfants</h2>
+        <p>NearKey est adapté aux utilisateurs de tous âges. Nous ne collectons aucune information personnelle de qui que ce soit, y compris les enfants.</p>
+
+        <h2>Conservation et suppression des données</h2>
+        <ul>
+            <li>Toutes les données sont stockées localement jusqu'à ce que vous les supprimiez dans l'application ou que vous désinstalliez l'application.</li>
+            <li>La désinstallation de l'application supprime toutes les données stockées localement.</li>
+            <li>Ne conservons aucune de vos données sur un serveur.</li>
+        </ul>
+
+        <h2>Vos choix</h2>
+        <ul>
+            <li>Supprimer des entrées individuelles du coffre-fort ou l'intégralité du coffre-fort dans l'application</li>
+            <li>Désactiver le déverrouillage biométrique dans les Paramètres</li>
+            <li>Ne pas utiliser la synchronisation locale, l'importation de captures ou l'importation/exportation KDBX</li>
+            <li>Désinstaller l'application pour supprimer toutes les données</li>
+        </ul>
+
+        <h2>Modifications de cette politique</h2>
+        <p>Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Les modifications seront reflétées dans la date de « Dernière mise à jour ». L'utilisation continue de l'application après les modifications constitue une acceptation de la politique révisée.</p>
+
+        <h2>Contact</h2>
+        <p>Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à : <strong><a href="mailto:zetavue@gmail.com">zetavue@gmail.com</a></strong></p>
+    </div>
+
+    <!-- Italiano -->
+    <div id="it" class="section">
+        <p>Ultimo aggiornamento: 2026-05-12</p>
+        <span class="badge">Locale prima di tutto &bull; Nessun cloud &bull; Nessun tracciamento</span>
+
+        <h2>Dati che gestiamo</h2>
+        <p>NearKey può elaborare i seguenti tipi di dati <strong>sul tuo dispositivo</strong>:</p>
+        <ul>
+            <li>Password principale &mdash; utilizzata per sbloccare la cassaforte locale</li>
+            <li>Voci della cassaforte &mdash; nomi degli account, password, note, URL, categorie e campi personalizzati che salvi</li>
+            <li>Immagini che scegli di importare tramite OCR da screenshot</li>
+            <li>File KeePass KDBX che scegli di importare o esportare</li>
+            <li>Dati di sincronizzazione locale generati quando avvii la sincronizzazione peer-to-peer</li>
+        </ul>
+
+        <h2>Cosa NON raccogliamo</h2>
+        <ul>
+            <li><strong>Non</strong> raccogliamo, trasmettiamo né memorizziamo le tue password, i contenuti della cassaforte o la password principale su alcun server.</li>
+            <li><strong>Non</strong> richiediamo la creazione di un account online.</li>
+            <li><strong>Non</strong> includiamo SDK di analisi, servizi di segnalazione crash, SDK pubblicitari o framework di tracciamento.</li>
+            <li><strong>Non</strong> vendiamo, condividiamo né monetizziamo i tuoi dati personali.</li>
+        </ul>
+
+        <h2>Archiviazione e crittografia dei dati</h2>
+        <ul>
+            <li>La tua cassaforte è archiviata localmente in un database crittografato (SQLCipher) sul tuo dispositivo.</li>
+            <li>La chiave di crittografia dei dati (DEK) è memorizzata nell'archiviazione sicura della piattaforma (iOS Keychain / Android EncryptedSharedPreferences).</li>
+            <li>La password principale non viene mai memorizzata in testo semplice. Viene utilizzata solo per derivare la chiave di crittografia in fase di esecuzione.</li>
+            <li>Dopo aver abilitato lo sblocco biometrico, la DEK della cassaforte è memorizzata nell'archiviazione sicura e viene rilasciata solo dopo un'autenticazione biometrica riuscita. <strong>L'app non memorizza alcun modello biometrico, immagine di impronta digitale o dato facciale.</strong></li>
+        </ul>
+
+        <h2>Autenticazione biometrica</h2>
+        <p>NearKey utilizza il sistema biometrico integrato del dispositivo (Face ID, Touch ID, impronta digitale) tramite l'API nativa del sistema operativo. L'app riceve esclusivamente un risultato di successo o fallimento. Nessun dato biometrico viene acquisito, memorizzato o trasmesso.</p>
+
+        <h2>Accesso alla fotocamera</h2>
+        <p>L'accesso alla fotocamera viene richiesto solo quando utilizzi la funzione di scansione codici QR per l'accoppiamento della sincronizzazione locale tra dispositivi. I dati della fotocamera sono elaborati interamente sul dispositivo per decodificare il codice QR. Nessuna immagine della fotocamera viene memorizzata o trasmessa.</p>
+
+        <h2>Importazione screenshot e OCR</h2>
+        <ul>
+            <li>Quando scegli di importare uno screenshot, l'immagine viene elaborata utilizzando Google ML Kit Riconoscimento Testo sul dispositivo. Il modello OCR è integrato nell'app e funziona interamente sul dispositivo. Nessun dato immagine viene inviato ai server di Google.</li>
+            <li>Le immagini importate vengono conservate temporaneamente ed eliminate al completamento del processo di importazione.</li>
+        </ul>
+        <p><em>Nota:</em> L'SDK Google ML Kit può raccogliere metriche di utilizzo anonime (es. conteggi chiamate API) secondo le pratiche sulla privacy di Google. Ciò non include le tue immagini o contenuti testuali.</p>
+
+        <h2>Sincronizzazione locale peer-to-peer</h2>
+        <ul>
+            <li>La sincronizzazione viene avviata solo quando la avvii esplicitamente e la confermi su entrambi i dispositivi.</li>
+            <li>I dati vengono trasmessi tramite un canale crittografato (scambio chiavi X25519 + crittografia AES) direttamente tra i dispositivi &mdash; nessun server è coinvolto.</li>
+            <li>I dati di sincronizzazione includono payload crittografati della cassaforte e metadati del dispositivo (nome dispositivo, piattaforma, ID dispositivo). Nessuna password in testo semplice viene trasmessa.</li>
+            <li>Le sessioni di sincronizzazione scadono dopo 10 minuti di inattività.</li>
+        </ul>
+
+        <h2>Importazione ed esportazione di file</h2>
+        <p>I file di importazione/esportazione KDBX vengono letti e generati localmente, crittografati con la tua password principale e salvati tramite il selettore file del sistema operativo o il foglio di condivisione. NearKey non trasmette i file importati o esportati ad alcun server.</p>
+
+        <h2>Accesso di rete</h2>
+        <table>
+            <tr><th>Connessione</th><th>Scopo</th><th>Dati inviati</th></tr>
+            <tr><td>Google Fonts CDN</td><td>Scaricare il carattere Inter al primo avvio</td><td>Solo intestazioni HTTP standard</td></tr>
+            <tr><td>Wi-Fi locale (TCP)</td><td>Sincronizzazione peer-to-peer</td><td>Dati crittografati della cassaforte e metadati del dispositivo</td></tr>
+        </table>
+        <p>Non vengono effettuate altre connessioni di rete. L'app non ha un server backend.</p>
+
+        <h2>Componenti di terze parti</h2>
+        <table>
+            <tr><th>Componente</th><th>Scopo</th><th>Gestione dei dati</th></tr>
+            <tr><td>flutter_secure_storage</td><td>Memorizzare le chiavi di crittografia</td><td>Chiavi nell'archiviazione sicura del SO</td></tr>
+            <tr><td>local_auth</td><td>Autenticazione biometrica</td><td>Gestito dal SO; l'app riceve solo risultato successo/fallimento</td></tr>
+            <tr><td>mobile_scanner</td><td>Scansione codici QR</td><td>Solo sul dispositivo</td></tr>
+            <tr><td>Google ML Kit</td><td>OCR sul dispositivo</td><td>Sul dispositivo; Google può raccogliere metriche anonime dell'SDK</td></tr>
+            <tr><td>google_fonts</td><td>Caricamento caratteri</td><td>Scarica i caratteri dal CDN di Google</td></tr>
+        </table>
+
+        <h2>Privacy dei minori</h2>
+        <p>NearKey è adatto a utenti di tutte le età. Non raccogliamo informazioni personali da nessuno, inclusi i minori.</p>
+
+        <h2>Conservazione ed eliminazione dei dati</h2>
+        <ul>
+            <li>Tutti i dati sono memorizzati localmente fino a quando non li elimini nell'app o disinstalli l'app.</li>
+            <li>La disinstallazione dell'app rimuove tutti i dati memorizzati localmente.</li>
+            <li>Non conserviamo alcun tuo dato su alcun server.</li>
+        </ul>
+
+        <h2>Le tue scelte</h2>
+        <ul>
+            <li>Eliminare singole voci della cassaforte o l'intera cassaforte dall'app</li>
+            <li>Disattivare lo sblocco biometrico nelle Impostazioni</li>
+            <li>Non utilizzare la sincronizzazione locale, l'importazione screenshot o l'importazione/esportazione KDBX</li>
+            <li>Disinstallare l'app per rimuovere tutti i dati</li>
+        </ul>
+
+        <h2>Modifiche a questa informativa</h2>
+        <p>Potremmo aggiornare questa informativa sulla privacy di tanto in tanto. Le modifiche saranno riportate nella data di "Ultimo aggiornamento". L'uso continuato dell'app dopo le modifiche costituisce l'accettazione dell'informativa revisionata.</p>
+
+        <h2>Contatti</h2>
+        <p>Se hai domande su questa informativa sulla privacy, contattaci a: <strong><a href="mailto:zetavue@gmail.com">zetavue@gmail.com</a></strong></p>
+    </div>
+
+    <!-- Português -->
+    <div id="pt" class="section">
+        <p>Última atualização: 2026-05-12</p>
+        <span class="badge">Local primeiro &bull; Sem nuvem &bull; Sem rastreamento</span>
+
+        <h2>Dados que processamos</h2>
+        <p>O NearKey pode processar os seguintes tipos de dados <strong>no seu dispositivo</strong>:</p>
+        <ul>
+            <li>Senha mestra &mdash; usada para desbloquear o seu cofre local</li>
+            <li>Entradas do cofre &mdash; nomes de conta, senhas, notas, URLs, categorias e campos personalizados que você guardar</li>
+            <li>Imagens que você escolher importar via OCR de capturas de tela</li>
+            <li>Arquivos KeePass KDBX que você escolher importar ou exportar</li>
+            <li>Dados de sincronização local gerados ao iniciar a sincronização entre dispositivos</li>
+        </ul>
+
+        <h2>O que NÃO coletamos</h2>
+        <ul>
+            <li><strong>Não</strong> coletamos, transmitimos ou armazenamos as suas senhas, conteúdos do cofre ou senha mestra em nenhum servidor.</li>
+            <li><strong>Não</strong> exigimos que você crie uma conta online.</li>
+            <li><strong>Não</strong> incluímos nenhum SDK de análise, serviço de relatórios de falhas, SDK publicitário ou framework de rastreamento.</li>
+            <li><strong>Não</strong> vendemos, compartilhamos ou monetizamos os seus dados pessoais.</li>
+        </ul>
+
+        <h2>Armazenamento e criptografia de dados</h2>
+        <ul>
+            <li>O seu cofre é armazenado localmente em um banco de dados criptografado (SQLCipher) no seu dispositivo.</li>
+            <li>A Chave de Criptografia de Dados (DEK) é armazenada no armazenamento seguro da plataforma (iOS Keychain / Android EncryptedSharedPreferences).</li>
+            <li>A senha mestra nunca é armazenada em texto simples. Ela é usada apenas para derivar a chave de criptografia em tempo de execução.</li>
+            <li>Após ativar o desbloqueio biométrico, a DEK do cofre é armazenada no armazenamento seguro e liberada apenas após uma autenticação biométrica bem-sucedida. <strong>O aplicativo não armazena nenhum modelo biométrico, imagem de impressão digital ou dado facial.</strong></li>
+        </ul>
+
+        <h2>Autenticação biométrica</h2>
+        <p>O NearKey utiliza o sistema biométrico integrado do dispositivo (Face ID, Touch ID, impressão digital) através da API nativa do sistema operativo. O aplicativo recebe apenas um resultado de sucesso ou falha. Nenhum dado biométrico é capturado, armazenado ou transmitido.</p>
+
+        <h2>Acesso à câmera</h2>
+        <p>O acesso à câmera é solicitado apenas quando você utiliza a funcionalidade de leitura de códigos QR para emparelhamento de sincronização local entre dispositivos. Os dados da câmera são processados inteiramente no dispositivo para decodificar o código QR. Nenhuma imagem da câmera é armazenada ou transmitida.</p>
+
+        <h2>Importação de capturas de tela e OCR</h2>
+        <ul>
+            <li>Quando você escolhe importar uma captura de tela, a imagem é processada utilizando o Google ML Kit Reconhecimento de Texto no dispositivo. O modelo OCR é integrado ao aplicativo e funciona inteiramente no dispositivo. Nenhum dado de imagem é enviado aos servidores do Google.</li>
+            <li>As imagens importadas são mantidas temporariamente e eliminadas após a conclusão do processo de importação.</li>
+        </ul>
+        <p><em>Nota:</em> O SDK do Google ML Kit pode coletar métricas de uso anônimas (por ex., contagens de chamadas de API) de acordo com as práticas de privacidade do Google. Isso não inclui as suas imagens ou conteúdo de texto.</p>
+
+        <h2>Sincronização local entre dispositivos</h2>
+        <ul>
+            <li>A sincronização só é iniciada quando você a inicia explicitamente e a confirma em ambos os dispositivos.</li>
+            <li>Os dados são transmitidos por um canal criptografado (troca de chaves X25519 + criptografia AES) diretamente entre os dispositivos &mdash; nenhum servidor está envolvido.</li>
+            <li>Os dados de sincronização incluem cargas úteis criptografadas do cofre e metadados do dispositivo (nome do dispositivo, plataforma, ID do dispositivo). Nenhuma senha em texto simples é transmitida.</li>
+            <li>As sessões de sincronização expiram após 10 minutos de inatividade.</li>
+        </ul>
+
+        <h2>Importação e exportação de arquivos</h2>
+        <p>Os arquivos de importação/exportação KDBX são lidos e gerados localmente, criptografados com a sua senha mestra e guardados através do seletor de arquivos do sistema ou da folha de partilha. O NearKey não transmite arquivos importados ou exportados para nenhum servidor.</p>
+
+        <h2>Acesso à rede</h2>
+        <table>
+            <tr><th>Conexão</th><th>Finalidade</th><th>Dados enviados</th></tr>
+            <tr><td>Google Fonts CDN</td><td>Descarregar a fonte Inter na primeira inicialização</td><td>Apenas cabeçalhos HTTP padrão</td></tr>
+            <tr><td>Wi-Fi local (TCP)</td><td>Sincronização entre dispositivos</td><td>Dados criptografados do cofre e metadados do dispositivo</td></tr>
+        </table>
+        <p>Nenhuma outra conexão de rede é estabelecida. O aplicativo não possui servidor backend.</p>
+
+        <h2>Componentes de terceiros</h2>
+        <table>
+            <tr><th>Componente</th><th>Finalidade</th><th>Tratamento dos dados</th></tr>
+            <tr><td>flutter_secure_storage</td><td>Armazenar chaves de criptografia</td><td>Chaves no armazenamento seguro do SO</td></tr>
+            <tr><td>local_auth</td><td>Autenticação biométrica</td><td>Gerido pelo SO; o aplicativo recebe apenas resultado de sucesso/falha</td></tr>
+            <tr><td>mobile_scanner</td><td>Leitura de códigos QR</td><td>Apenas no dispositivo</td></tr>
+            <tr><td>Google ML Kit</td><td>OCR no dispositivo</td><td>No dispositivo; o Google pode coletar métricas anônimas do SDK</td></tr>
+            <tr><td>google_fonts</td><td>Carregamento de fontes</td><td>Descarrega fontes do CDN do Google</td></tr>
+        </table>
+
+        <h2>Privacidade infantil</h2>
+        <p>O NearKey é adequado para utilizadores de todas as idades. Não coletamos informações pessoais de ninguém, incluindo crianças.</p>
+
+        <h2>Retenção e eliminação de dados</h2>
+        <ul>
+            <li>Todos os dados são armazenados localmente até que você os elimine no aplicativo ou desinstale o aplicativo.</li>
+            <li>A desinstalação do aplicativo remove todos os dados armazenados localmente.</li>
+            <li>Não retemos nenhum dos seus dados em nenhum servidor.</li>
+        </ul>
+
+        <h2>As suas escolhas</h2>
+        <ul>
+            <li>Eliminar entradas individuais do cofre ou o cofre inteiro dentro do aplicativo</li>
+            <li>Desativar o desbloqueio biométrico nas Configurações</li>
+            <li>Não utilizar a sincronização local, a importação de capturas ou a importação/exportação KDBX</li>
+            <li>Desinstalar o aplicativo para remover todos os dados</li>
+        </ul>
+
+        <h2>Alterações a esta política</h2>
+        <p>Podemos atualizar esta política de privacidade periodicamente. As alterações serão refletidas na data de "Última atualização". O uso continuado do aplicativo após as alterações constitui aceitação da política revisada.</p>
+
+        <h2>Contato</h2>
+        <p>Se tiver perguntas sobre esta política de privacidade, entre em contato conosco em: <strong><a href="mailto:zetavue@gmail.com">zetavue@gmail.com</a></strong></p>
     </div>
 
     <footer>
